@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+GameManager - destroyed on scene load. Considering that each world is completely 100% procedural,
+there was no need for a persistant GameManager.
+2017/4/23
+@author jdmazz
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +22,7 @@ public class GameManager : MonoBehaviour {
 	public int stageCols = 2;
 	public float stageX = 0f;
 	public float stageY = 0f;
+	public string taunt;
 
 	Text levelText;
 	GameObject levelImage;
@@ -24,6 +31,7 @@ public class GameManager : MonoBehaviour {
 	GameObject player;
 	bool start = false;
 	Camera cam;
+	Text tauntText;
 
 	[HideInInspector]
 	public bool makingStage;
@@ -45,11 +53,14 @@ public class GameManager : MonoBehaviour {
         dejavuText = GameObject.Find("DejaVu").GetComponent<Text>();
 		player = GameObject.Find("Player");
 		timerText = GameObject.Find("TimerText").GetComponent<Text>();
+		tauntText = GameObject.Find("TauntText").GetComponent<Text>();
+		tauntText.text = taunt;
 	}
 
 	void Update ()
 	{
 		if (!start) {
+			// give it a little time to make the stage, but it's so fast!
 			DelayedStart();
 		} else if (!makingStage) {
 			levelImage.SetActive (false);
@@ -71,6 +82,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator Delayed() {
+		// Give a delay to the loading screen
 		yield return new WaitForSeconds(1.5f);
 		if (!makingStage && start) {
 			levelImage.SetActive (false);
@@ -89,10 +101,11 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void MakeStage() {
-		Transform stageTrans = Instantiate(stage);
-		stageTrans.localPosition = new Vector3(stageX,stageY,0);
+		// Must allocate the rows and cols before makings the stage. :-P
 		stage.GetComponent<MazeMaker>().rows = stageRows;
 		stage.GetComponent<MazeMaker>().cols = stageCols;
+		Transform stageTrans = Instantiate(stage);
+		stageTrans.localPosition = new Vector3(stageX,stageY,0);
 	}
 
 	void MakeCanvas() {

@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+Stupid Witch behavior. Surely YOU can do better than a randomly moving witch!!!
+2017/4/23
+@author jdmazz
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,11 +16,14 @@ public class Witch : MonoBehaviour {
 	float h,v;
 
 	void Start () {
-		++FindObjectOfType<Player>().dejavuPts;
+		++FindObjectOfType<Player>().dejavuPts; // update players points with each created witch
 	}
 	
 	void Update ()
 	{
+		// move the witch in a random direction without checking walls. Good AI, yes/no...
+		// Definitely a no. :-(
+		// 48h is so harsh...
 		int rng = Random.Range (0, 10);
 		if (rng > 8) {
 			Dir[] dirs = { Dir.LEFT, Dir.UP, Dir.RIGHT, Dir.DOWN };

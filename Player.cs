@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+Gives player movement and stores his deja vu points.
+2017/4/23
+@author jdmazz
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +20,7 @@ public class Player : MonoBehaviour {
 	}
 	
 	void Update () {
+		// Nice multiple controller functionality thanks to another layer of indirection
 		h = Input.GetAxisRaw("Horizontal");
 		v = Input.GetAxisRaw("Vertical");
 		if (h == 1) transform.localPosition += new Vector3(moveSpeed*Time.deltaTime,0);

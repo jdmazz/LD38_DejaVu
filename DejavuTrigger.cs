@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+Triggers saying Hi! when encountering another witch. Also, updates points.
+2017/4/23
+@author jdmazz
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

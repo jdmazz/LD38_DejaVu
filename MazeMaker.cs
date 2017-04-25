@@ -1,5 +1,9 @@
 ﻿/*
-Simple maze generator using stack, rng adjacent directions, and prefab instantion
+Maze generator using stack, DFS, rng adjacent directions, and prefab instantion.
+Non-trivial class in and of itself and I made it during a 48 game jam. Booyah!
+BTW, this maze generator is based on Jarník's algorithm. He's a very smart guy, as
+most mathematicians are. Read about him on wiki:
+https://en.wikipedia.org/wiki/Vojt%C4%9Bch_Jarn%C3%ADk
 2017/4/23
 @author jdmazz
 */
@@ -30,15 +34,15 @@ public class MazeMaker : MonoBehaviour {
 
 	void Awake ()
 	{
-		int[,,] maze = new int[rows, cols, 5];
+		int[,,] maze = new int[rows, cols, 5]; // Start with a grid full of walls.
 		int[,] stage = new int[3 * rows, 3 * cols];
 		Pair p = new Pair (0, 0);
 		Stack<Pair> st = new Stack<Pair> ();
 		st.Push (new Pair(p.x,p.y));
 		while (st.Count > 0) {
-			maze [p.x, p.y, 4] = 1;
-			List<Dir> dirs = new List<Dir> ();
-			if (p.y > 0 && maze [p.x, p.y - 1, 4] == 0)
+			maze [p.x, p.y, 4] = 1; // Pick a cell, mark it as part of the maze.
+			List<Dir> dirs = new List<Dir> (); // Add the walls of the cell to the wall list.
+			if (p.y > 0 && maze [p.x, p.y - 1, 4] == 0) 
 				dirs.Add (Dir.LEFT);
 			if (p.x > 0 && maze[p.x-1,p.y,4] == 0)
 				dirs.Add(Dir.UP);
@@ -47,13 +51,13 @@ public class MazeMaker : MonoBehaviour {
 			if (p.x < rows-1 && maze[p.x+1,p.y,4] == 0)
 				dirs.Add(Dir.DOWN);
 
-			if (dirs.Count > 0) {
+			if (dirs.Count > 0) { // While there are walls in the list: 
 				st.Push(new Pair(p.x,p.y));
-				Dir rngDir = dirs [Random.Range (0, dirs.Count)];
+				Dir rngDir = dirs [Random.Range (0, dirs.Count)]; // Pick a random wall from the list.
 				switch (rngDir) {
 				case Dir.LEFT:
-					maze[p.x,p.y--,0] = 1;
-					maze[p.x,p.y,2] = 1;
+					maze[p.x,p.y--,0] = 1; // Make the wall a passage 
+					maze[p.x,p.y,2] = 1; // and mark the unvisited cell as part of the maze.
 				break;
 				case Dir.UP:
 					maze[p.x--,p.y,1] = 1;
@@ -69,7 +73,7 @@ public class MazeMaker : MonoBehaviour {
 				break;
 				}
 			} else {
-				p = st.Pop();
+				p = st.Pop(); // Remove the wall from the list.
 			}
 		}
 		RenderMaze(maze, stage);
@@ -84,6 +88,7 @@ public class MazeMaker : MonoBehaviour {
 		print(sb.ToString());
 	}
 
+	// Calculates where to actually render the maze
 	void RenderMaze (int[,,] maze, int[,] stage)
 	{
 		for (int m = 0; m < rows; ++m) {
@@ -117,6 +122,7 @@ public class MazeMaker : MonoBehaviour {
 		RenderStage(stage);
 	}
 
+	// Renders the small world
 	void RenderStage(int[,] stage) {
 		for (int i = 0; i < 3*rows; ++i) {
 			for (int j = 0; j < 3*cols; ++j) {
@@ -130,7 +136,7 @@ public class MazeMaker : MonoBehaviour {
 				}
 			}
 		}
-		//barriers
+		// render outer barriers
 		for (int j = 0; j <3*cols; ++j) {
 			Transform barTrans1 = Instantiate(barriers[0]);
 			barTrans1.SetParent(transform);
