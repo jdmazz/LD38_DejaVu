@@ -1,6 +1,7 @@
 ﻿/*
 GameManager - destroyed on scene load. Considering that each world is completely 100% procedural,
 there was no need for a persistant GameManager.
+Script timing is critical: GameManager->MazeMaker->Player
 2017/4/23
 @author jdmazz
 */
