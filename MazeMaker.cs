@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 
+// Ordered pair needed to describe a 2D maze
 class Pair {
 	public Pair(int x, int y) {
 		this.x = x;
@@ -81,6 +82,7 @@ public class MazeMaker : MonoBehaviour {
 		GameObject.Find ("GameManager").GetComponent<GameManager> ().makingStage = false;
 	}
 
+    // Useful for debugging the stack
 	void ShowStack(Stack<Pair> st) {
 		StringBuilder sb = new StringBuilder();
 		foreach (Pair s in st)

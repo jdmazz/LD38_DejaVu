@@ -15,6 +15,7 @@ public class Witch : MonoBehaviour {
 
 	float h,v;
 
+    // If this becomes Awake, then it must be added to the script execution order after Player.
 	void Start () {
 		++FindObjectOfType<Player>().dejavuPts; // update players points with each created witch
 	}
@@ -23,9 +24,8 @@ public class Witch : MonoBehaviour {
 	// Also, if witch moves fast, set her to continuous (particularly for web build)
 	void FixedUpdate ()
 	{
-		// move the witch in a random direction without checking walls. Good AI, yes/no...
-		// Definitely a no. :-(
-		// 48h is so harsh...
+		// Move the witch in a random direction without checking walls. Good AI, yes/no...
+		// Definitely a no. But, I'm actually thinking the witch wiggle has charm. :-)
 		int rng = Random.Range (0, 10);
 		if (rng > 7) {
 			Dir[] dirs = { Dir.LEFT, Dir.UP, Dir.RIGHT, Dir.DOWN };

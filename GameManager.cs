@@ -1,7 +1,7 @@
 ﻿/*
 GameManager - destroyed on scene load. Considering that each world is completely 100% procedural,
 there was no need for a persistant GameManager.
-Script timing is critical: GameManager->MazeMaker->Player
+Script timing is critical: GameManager->MazeMaker->Player->Witch
 2017/4/23
 @author jdmazz
 */
@@ -12,7 +12,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-	public static GameManager gm;
 	public int level;
 	public string levelAfterVictory;
 	public float cameraSize = 10;

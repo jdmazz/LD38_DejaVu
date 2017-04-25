@@ -16,7 +16,7 @@ public class Player : MonoBehaviour {
 	float h,v;
 
 	void Awake () {
-		dejavuPts = 0;
+		dejavuPts = 0; // The witches MUST come after Player, because of this
 	}
 
 	// Must be fixed for proper collision detection

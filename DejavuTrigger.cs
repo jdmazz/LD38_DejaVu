@@ -12,7 +12,7 @@ public class DejavuTrigger : MonoBehaviour {
         if (other.tag == "Witch") {
 			if (!other.GetComponent<Witch>().dejavu) {
 	        	other.GetComponent<Animator>().SetTrigger("Hi");
-				other.GetComponent<Witch>().dejavu = true;
+				other.GetComponent<Witch>().dejavu = true; // Turns off collisions with this witch
         		transform.GetComponentInParent<Animator>().SetTrigger("Hi");
         		--transform.GetComponentInParent<Player>().dejavuPts;
         	}
