@@ -24,7 +24,7 @@ https://github.com/jdmazz/LD38_DejaVu
 
 # Tips
 1. Meet all witches before the time runs out.
-2. Don't forget, in a procedural world, restarting **IS** a strategy.
+2. Don't forget, in a procedural world, **restarting** is a strategy.
 
 # Tools
 - Unity
