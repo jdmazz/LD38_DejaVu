@@ -18,8 +18,9 @@ public class Player : MonoBehaviour {
 	void Awake () {
 		dejavuPts = 0;
 	}
-	
-	void Update () {
+
+	// Must be fixed for proper collision detection
+	void FixedUpdate () {
 		// Nice multiple controller functionality thanks to another layer of indirection
 		h = Input.GetAxisRaw("Horizontal");
 		v = Input.GetAxisRaw("Vertical");

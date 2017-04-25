@@ -18,14 +18,16 @@ public class Witch : MonoBehaviour {
 	void Start () {
 		++FindObjectOfType<Player>().dejavuPts; // update players points with each created witch
 	}
-	
-	void Update ()
+
+	// Must be fixedupdate for proper collision detection
+	// Also, if witch moves fast, set her to continuous (particularly for web build)
+	void FixedUpdate ()
 	{
 		// move the witch in a random direction without checking walls. Good AI, yes/no...
 		// Definitely a no. :-(
 		// 48h is so harsh...
 		int rng = Random.Range (0, 10);
-		if (rng > 8) {
+		if (rng > 7) {
 			Dir[] dirs = { Dir.LEFT, Dir.UP, Dir.RIGHT, Dir.DOWN };
 			Dir rngDir = dirs [Random.Range (0, dirs.Length)];
 			switch (rngDir) {

@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour {
 				LoadNextLevel ();
 			timeLeft -= Time.deltaTime;
 			timerText.text = "Time: " + (int)timeLeft + "s";
-			if (timeLeft < 0) {
+			if (timeLeft < 0 || Input.GetAxisRaw("Cancel") == 1) {
 				ResetGame ();
 			}
 		}
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator Delayed() {
 		// Give a delay to the loading screen
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(1f);
 		if (!makingStage && start) {
 			levelImage.SetActive (false);
 		}
