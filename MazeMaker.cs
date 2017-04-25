@@ -1,6 +1,6 @@
 ﻿/*
 Maze generator using stack, DFS, rng adjacent directions, and prefab instantion.
-Non-trivial class in and of itself and I made it during a 48 game jam. Booyah!
+Non-trivial class in and of itself and I made it during a 48h game jam. Booyah!
 BTW, this maze generator is based on Jarník's algorithm. He's a very smart guy, as
 most mathematicians are. Read about him on wiki:
 https://en.wikipedia.org/wiki/Vojt%C4%9Bch_Jarn%C3%ADk
@@ -73,7 +73,7 @@ public class MazeMaker : MonoBehaviour {
 				break;
 				}
 			} else {
-				p = st.Pop(); // Remove the wall from the list.
+				p = st.Pop(); // Remove the cell from the list.
 			}
 		}
 		RenderMaze(maze, stage);
