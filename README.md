@@ -12,7 +12,7 @@ C#/Unity Engine - #LDJAM38 compo code.
 ![dejavu_screenshot2.png](https://static.jam.vg/raw/b4d/3/z/267d.png)
 
 # Play Deja Vu Online Now! Be Somebody.
-http://pixiludi.com/games/DejaVuWeb/dejavu.html
+http://www.kongregate.com/games/jdmazz/deja-vu
 
 # Source Code
 https://github.com/jdmazz/LD38_DejaVu
