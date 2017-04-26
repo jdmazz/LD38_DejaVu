@@ -14,9 +14,6 @@ C#/Unity Engine - #LDJAM38 compo code.
 # Play Deja Vu Online Now! Be Somebody.
 http://www.kongregate.com/games/jdmazz/deja-vu
 
-# Source Code
-https://github.com/jdmazz/LD38_DejaVu
-
 # Features
 - 100% procedurally generated worlds.
 - Multi-controller input: WASD/Arrow Keys/Controller to Move.
