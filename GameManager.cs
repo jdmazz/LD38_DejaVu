@@ -84,9 +84,6 @@ public class GameManager : MonoBehaviour {
 	IEnumerator Delayed() {
 		// Give a delay to the loading screen
 		yield return new WaitForSeconds(1f);
-		if (!makingStage && start) {
-			levelImage.SetActive (false);
-		}
 		start = true;
 	}
 
