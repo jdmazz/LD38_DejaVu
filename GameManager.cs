@@ -45,12 +45,12 @@ public class GameManager : MonoBehaviour {
 		cam.orthographicSize = cameraSize;
 		makingStage = true;
 		MakeStage();
-        MakeCanvas();
-        levelImage = GameObject.Find("BGLevelImage");
+        	MakeCanvas();
+        	levelImage = GameObject.Find("BGLevelImage");
 		levelImage.SetActive(true);
-        levelText = GameObject.Find("LevelText").GetComponent<Text>();
+        	levelText = GameObject.Find("LevelText").GetComponent<Text>();
 		levelText.text = "Small World " + level;
-        dejavuText = GameObject.Find("DejaVu").GetComponent<Text>();
+        	dejavuText = GameObject.Find("DejaVu").GetComponent<Text>();
 		player = GameObject.Find("Player");
 		timerText = GameObject.Find("TimerText").GetComponent<Text>();
 		tauntText = GameObject.Find("TauntText").GetComponent<Text>();
